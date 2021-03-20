@@ -1,14 +1,13 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { CardDetail } from "../components/card-detail";
 
 export const DetailPage: React.FC = () => {
-  const { id } = useParams<Record<string, string>>();
 
   return (
     <>
-      <h2>Hello from Detail page</h2>
-      <h3>User Id: {id}</h3>
-      <Link to="/list">Back to list page</Link>
+      <CardDetail />
+      <Link to="/">Back to list page</Link>
     </>
   );
 };

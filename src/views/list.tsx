@@ -1,14 +1,11 @@
-import React from "react";
-import { MemberList } from "../components/member-list";
-import { MemberSearch } from "../components/member-search";
+import React from 'react';
+import { CharacterList } from '../components/character-list';
 
 export const ListPage: React.FC = () => {
 
   return (
     <>
-      <h2>Hello from List page</h2>
-      <MemberSearch />
-      <MemberList />
+      <CharacterList />
     </>
   );
 };

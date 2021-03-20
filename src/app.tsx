@@ -1,19 +1,14 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { ListPage } from "./views/list";
-import { DetailPage } from "./views/detail";
+import { CharacterProvider } from "./core/character-provider";
+import { Layout } from "./layout";
+import { RouterComponent } from "./core/router";
 
 export const App = () => {
   return (
-    <Router>
-      <Switch>
-        <Route path="/">
-          <ListPage />
-        </Route>
-        <Route path="/detail/:id">
-          <DetailPage />
-        </Route>
-      </Switch>
-    </Router>
+      <CharacterProvider>
+        <Layout>
+          <RouterComponent />
+        </Layout>
+      </CharacterProvider>    
   );
 };

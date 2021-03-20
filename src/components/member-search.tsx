@@ -1,24 +1,51 @@
+import { TextField } from "@material-ui/core";
 import React from "react";
-import { CorporationContext } from "../core/corporation-provider.component";
+import { CharacterContext } from "../core/character-provider";
+import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { useDebounce } from "use-debounce/lib";
+
+const useStyles = makeStyles(() =>
+    createStyles({
+        root: {
+            margin: '.8rem',
+            '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                    borderColor: 'white',
+                },
+            },
+            '& label': {
+                color: 'white',
+                '&.Mui-focused': {
+                    color: 'white',
+                    borderColor: 'white',
+                }
+            },
+            '& .MuiOutlinedInput-root.Mui-focused': {
+                '& fieldset': {
+                    borderColor: 'white',
+                },
+            }
+        },
+    }),
+);
+
 
 export const MemberSearch: React.FC = () => {
-    const { setCorporation } = React.useContext(CorporationContext);
-    const { corporation } = React.useContext(CorporationContext);
-    const [ filter, setFilter ] = React.useState(corporation);
+    const { name, setName } = React.useContext(CharacterContext);
+    const [ filter, setFilter ] = React.useState(name);
+    const [ debouncedFilter ] = useDebounce(filter, 350);
+    const classes = useStyles();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setCorporation(filter)
-        console.log(corporation)
-        console.log(filter)
-    }
+    React.useEffect(() => {
+        setName(filter)
+    }, [debouncedFilter])
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                <input value={filter} onChange={(e) => setFilter(e.target.value)} type="text"/>
-            </label>
-            <button>Search</button>
-        </form>
+        <TextField
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+            className={classes.root}
+            label="Search character"
+            variant="outlined" />
     )
 }
