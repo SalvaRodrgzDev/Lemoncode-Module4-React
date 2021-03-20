@@ -5,10 +5,10 @@ interface CharacterContext {
     setName: (value: string) => void;
 }
 
-const defaultValue: string = "poopybutthole";
+const defaultValue: string = 'poopybutthole';
 
 export const CharacterContext = React.createContext<CharacterContext>({
-    name: "",
+    name: '',
     setName: (value) => console.log('missing context provider')
 });
 

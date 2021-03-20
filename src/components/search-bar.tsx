@@ -3,7 +3,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import { MemberSearch } from './member-search';
+import { CharacterSearch } from './character-search';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -22,12 +22,12 @@ export default function SearchBar() {
     const classes = useStyles();
 
     return (
-        <AppBar position="sticky" >
+        <AppBar position='sticky' >
             <Toolbar>
                 <Typography className={classes.title} variant='h1'>
                     Rick And Morty App
                 </Typography>
-                <MemberSearch />
+                <CharacterSearch />
             </Toolbar>
         </AppBar>
     );

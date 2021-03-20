@@ -1,8 +1,8 @@
-import { Divider, List } from "@material-ui/core";
-import React from "react";
-import { CharacterContext } from "../core/character-provider";
-import { CharacterEntity } from "../models/CharacterEntity";
-import { CharacterListItem } from "./character-list-item";
+import { Divider, Grid, List } from '@material-ui/core';
+import React from 'react';
+import { CharacterContext } from '../core/character-provider';
+import { CharacterEntity } from '../models/CharacterEntity';
+import { CharacterListItem } from './character-list-item';
 
 export const CharacterList: React.FC = () => {
     const characterContext = React.useContext(CharacterContext);
@@ -18,18 +18,18 @@ export const CharacterList: React.FC = () => {
     }, [characterContext]);
 
     return (
-        <>
-        <List>
-            {characters ?
-                characters.map((character) => (
-                    <React.Fragment key={character.id}>
-                        <CharacterListItem  character={character} />
-                        <Divider variant="inset" component="li" />
-                    </React.Fragment>
-                )) :
-                null
-            }
-        </List>
-        </>
+        <Grid item xs={8}>
+            <List>
+                {characters ?
+                    characters.map((character) => (
+                        <React.Fragment key={character.id}>
+                            <CharacterListItem  character={character} />
+                            <Divider variant='inset' component='li' />
+                        </React.Fragment>
+                    )) :
+                    null
+                }
+            </List>
+        </Grid>
     )
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import SearchBar from '../components/search-bar';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
@@ -12,7 +12,7 @@ const theme = createMuiTheme({
             main: '#940364',
         },
         text: {
-            primary: 'white',
+            primary: '#fff',
         }
     },
     overrides: {
@@ -24,6 +24,19 @@ const theme = createMuiTheme({
                 color: '#12380d',
             },
         },
+        MuiCard: {
+            root: {
+                maxWidth: '300px',
+                margin: '2rem',
+                backgroundColor: '#62a4ab',
+            }
+        },
+        MuiCardMedia: {
+            root: {
+                height: 0,
+                paddingTop: '100%', // 1:1
+            }
+        },
     }
 });
 
@@ -32,9 +45,14 @@ export const Layout: React.FunctionComponent = props => {
     return (
         <ThemeProvider theme={theme}>
             <SearchBar />
-            <Container>
-                {children}
-            </Container>
+            <Grid
+                container
+                alignItems='center'
+                justify='center'
+                direction='column'
+            >
+                {children}         
+            </Grid>
         </ThemeProvider>
     );
 };
